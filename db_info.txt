@@ -1,0 +1,40 @@
+sqlite> .tables
+alembic_version  file_access_log  messages       
+encrypted_keys   file_metadata    users     
+
+PRAGMA table_info(messages);
+
+sqlite> PRAGMA table_info(users);
+0|id|INTEGER|1||1
+1|username|VARCHAR(150)|1||0
+2|department|VARCHAR(100)|1||0
+3|password_hash|VARCHAR(255)|1||0
+4|salt_hex|VARCHAR(64)|1||0
+5|role|VARCHAR(10)|1||0
+6|public_key_pem|VARCHAR(2048)|0||0
+7|private_key_pem|VARCHAR(2048)|0||0
+8|created_at|DATETIME|1|CURRENT_TIMESTAMP|0
+9|updated_at|DATETIME|1|CURRENT_TIMESTAMP|0
+
+
+
+sqlite> PRAGMA table_info(messages);
+0|id|INTEGER|1||1
+1|is_deleted|BOOLEAN|1||0
+2|sender_id|INTEGER|1||0
+3|receiver_id|INTEGER|1||0
+4|encrypted_content|VARCHAR(2048)|1||0
+5|created_at|DATETIME|1|CURRENT_TIMESTAMP|0
+6|updated_at|DATETIME|1|CURRENT_TIMESTAMP|0
+
+
+sqlite> PRAGMA table_info(encrypted_keys);
+0|id|INTEGER|1||1
+1|file_id|INTEGER|1||0
+2|encrypted_session_key|VARCHAR(512)|1||0
+3|created_at|DATETIME|1|CURRENT_TIMESTAMP|0
+4|updated_at|DATETIME|1|CURRENT_TIMESTAMP|0
+
+
+sqlite> PRAGMA table_info(alembic_version);
+0|version_num|VARCHAR(32)|1||1
